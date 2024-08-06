@@ -111,7 +111,7 @@ const PhotoCard = ({settings, bgColor}) => {
         {items.map((item, i) => (
           <CardItem key={i} style={{ position: "relative", marginRight: "20px"}}>
             <Img
-              style={{ width: "100%", height: "320px", position: "relative"}}
+              style={{ width: "100%", height: "320px", position: "relative", paddingRight: "10px"}}
             >
               <img
                 style={{

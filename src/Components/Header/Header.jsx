@@ -1,3 +1,5 @@
+// Header.js
+
 import React, { useEffect, useRef, useState } from "react";
 import {
   ActionIcons,
@@ -12,18 +14,15 @@ import {
   LogoText,
   Nav,
   NavLink,
+  Text,
   SearchContainer,
   SearchInput,
   ShortcutKeyIcon,
   DarkTheme,
-  LightTheme
-  
- 
+  LightTheme,
+  PageOverlay,
 } from "../../Style/Header.styled";
-import {
-  FaSearch,
-  FaShoppingCart,
-} from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { MdOutlineWallet } from "react-icons/md";
 import { MdOutlineHandshake } from "react-icons/md";
 import { LuPencilRuler } from "react-icons/lu";
@@ -39,11 +38,10 @@ import { MdOutlineContactSupport } from "react-icons/md";
 import { SiOpensea } from "react-icons/si";
 import { IoIosArrowForward } from "react-icons/io";
 import { ThemeProvider } from "styled-components";
-import Switch from "./Switch";
+import Switch from './Switch';
 
 const Header = () => {
-  const [theme, setTheme] = useState("light")
-  const isDarkTheme = theme === "dark";
+  const [theme, setTheme] = useState('light');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -51,8 +49,8 @@ const Header = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const toggleTheme = () => {
-    setTheme(isDarkTheme ? "light" : "dark");
+  const themeToggler = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   const handleClickOutside = (event) => {
@@ -61,141 +59,177 @@ const Header = () => {
     }
   };
 
+  const closeOverlay = () => {
+    setIsDropdownOpen(false);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
-    <HeaderContainer>
-      <Logo>
-        <LogoImg src="./images/opensea-logo.svg" alt="Logo" />
-        <LogoText>OpenSea</LogoText>
-      </Logo>
-      <Nav style={{marginLeft: "-270px"}}>
-        <NavLink href="#">Drops</NavLink>
-        <NavLink href="#">Stats</NavLink>
-        <NavLink href="#">Create</NavLink>
-      </Nav>
-      <SearchContainer>
-        <FaSearch color="white" />
-        <SearchInput type="text" placeholder="Search" />
-        <ShortcutKeyIcon>/</ShortcutKeyIcon>
-      </SearchContainer>
-      <ActionIcons>
-        <IconContainer>
-          <MdOutlineWallet
-            title="Login"
-            style={{ padding: "10px", fontSize: "1rem" }}
-          />
-          <IconText
-            style={{
-              fontSize: "1rem",
-              fontFamily: "sans-serif",
-              paddingRight: "10px",
-            }}
-          >
-            Login
-          </IconText>
-        </IconContainer>
-        <IconContainer ref={dropdownRef} onClick={toggleDropdown}>
-          <FaRegUserCircle
-            title="Profile"
-            style={{ padding: "10px 20px", fontSize: "1.1rem" }}
-          />
-          {isDropdownOpen && (
-            <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
-              
-            <DropdownMenu>
-              <DropdownContainer>
-                <DropdownItem>
-                  <CiUser title="user" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Profile
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                  <IoEyeOutline title="list" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    WatchList
-                  </IconText>
-                </DropdownItem>
-              </DropdownContainer>
-              <DropdownContainer>
-                <DropdownItem>
-                <MdOutlineHandshake title="holding hand" style={{ paddingLeft: "20px" }}/>
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Deals
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                <LuPencilRuler title="studio" style={{paddingLeft:"20px" }}/>
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Studio
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                  <SiOpensea  title="user" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    OpenSea Pro
-                  </IconText>
-                </DropdownItem>
-              </DropdownContainer>
-              <DropdownContainer>
-                <DropdownItem>
-                  <IoSettingsOutline title="setting" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Settings
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                  <CiGlobe title="user" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Language
-                  </IconText>
-                  <span style={{color: `${props => props.theme.color}`, paddingLeft: "60px", display: "flex", flexDirection: "row"}}>en <IoIosArrowForward /> </span>
-                </DropdownItem>
-                <DropdownItem>
-                  <GoMoon title="night mode" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Night Mode
-                  </IconText>
-                   <Switch toggleTheme={toggleTheme} />
-                </DropdownItem>
-              </DropdownContainer>
-              <DropdownContainer>
-                <DropdownItem>
-                  <LuGraduationCap title="learn" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Learn
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                  <PiNewspaper title="help center" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Help center
-                  </IconText>
-                </DropdownItem>
-                <DropdownItem>
-                  <MdOutlineContactSupport title="support" style={{ paddingLeft: "20px" }} />
-                  <IconText style={{ color: `${props => props.theme.color}`, padding: "4px 15px" }}>
-                    Support
-                  </IconText>
-                </DropdownItem>
-              </DropdownContainer>
-            </DropdownMenu>
-            </ThemeProvider>
-          )}
-        </IconContainer>
-        <IconContainer>
-          <FaShoppingCart
-            title="Cart"
-            style={{ padding: "10px 20px", fontSize: "1rem" }}
-          />
-        </IconContainer>
-      </ActionIcons>
-    </HeaderContainer>
+    <ThemeProvider theme={theme === 'light'  ?  LightTheme: DarkTheme}>
+      <HeaderContainer>
+        <Logo>
+          <LogoImg src="./images/opensea-logo.svg" alt="Logo" />
+          <LogoText>OpenSea</LogoText>
+        </Logo>
+        <Nav style={{ marginLeft: "-270px" }}>
+          <NavLink href="#">Drops</NavLink>
+          <NavLink href="#">Stats</NavLink>
+          <NavLink href="#">Create</NavLink>
+        </Nav>
+        <SearchContainer>
+          <FaSearch color="white" />
+          <SearchInput type="text" placeholder="Search" />
+          <ShortcutKeyIcon>/</ShortcutKeyIcon>
+        </SearchContainer>
+        <ActionIcons>
+          <IconContainer>
+            <MdOutlineWallet
+              title="Login"
+              style={{ padding: "10px", fontSize: "1rem" }}
+            />
+            <IconText
+              style={{
+                fontSize: "1rem",
+                fontFamily: "sans-serif",
+                paddingRight: "10px",
+              }}
+            >
+              Login
+            </IconText>
+          </IconContainer>
+          <IconContainer ref={dropdownRef} onClick={toggleDropdown}>
+            <FaRegUserCircle
+              title="Profile"
+              style={{ padding: "10px 20px", fontSize: "1.1rem" }}
+            />
+            {isDropdownOpen && (
+              <DropdownMenu>
+                <DropdownContainer>
+                  <DropdownItem>
+                    <CiUser title="user" style={{ paddingLeft: "20px" }} />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Profile
+                    </Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <IoEyeOutline
+                      title="list"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      WatchList
+                    </Text>
+                  </DropdownItem>
+                </DropdownContainer>
+                <DropdownContainer>
+                  <DropdownItem>
+                    <MdOutlineHandshake
+                      title="holding hand"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>Deals</Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <LuPencilRuler
+                      title="studio"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Studio
+                    </Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <SiOpensea title="user" style={{ paddingLeft: "20px" }} />
+                    <Text style={{ padding: "4px 15px" }}>
+                      OpenSea Pro
+                    </Text>
+                  </DropdownItem>
+                </DropdownContainer>
+                <DropdownContainer>
+                  <DropdownItem>
+                    <IoSettingsOutline
+                      title="setting"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Settings
+                    </Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <CiGlobe title="user" style={{ paddingLeft: "20px" }} />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Language
+                    </Text>
+                    <span
+                      style={{
+                        paddingLeft: "60px",
+                        display: "flex",
+                        flexDirection: "row",
+                      }}
+                    >
+                      en <IoIosArrowForward />{" "}
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <GoMoon
+                      title="night mode"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Night Mode
+                    </Text>
+                    <Switch theme={theme} themeToggler={themeToggler} />
+                  </DropdownItem>
+                </DropdownContainer>
+                <DropdownContainer>
+                  <DropdownItem>
+                    <LuGraduationCap
+                      title="learn"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>Learn</Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <PiNewspaper
+                      title="help center"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Help center
+                    </Text>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <MdOutlineContactSupport
+                      title="support"
+                      style={{ paddingLeft: "20px" }}
+                    />
+                    <Text style={{ padding: "4px 15px" }}>
+                      Support
+                    </Text>
+                  </DropdownItem>
+                </DropdownContainer>
+              </DropdownMenu>
+            )}
+            <PageOverlay
+              onClick={closeOverlay}
+              className={isDropdownOpen ? "visible" : null}
+            />
+          </IconContainer>
+          <IconContainer>
+            <FaShoppingCart
+              title="Cart"
+              style={{ padding: "10px 20px", fontSize: "1rem" }}
+            />
+          </IconContainer>
+        </ActionIcons>
+      </HeaderContainer>
+    </ThemeProvider>
   );
 };
 

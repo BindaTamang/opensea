@@ -3,9 +3,9 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgb(255, 255, 255, 0.1);
   border: none;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   position: relative; 
   z-index: 1; 
@@ -28,7 +28,7 @@ export const LogoImg = styled.img`
 export const LogoText = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: #fff;
   padding-right: 20px;
 `;
 
@@ -38,7 +38,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled.a`
-  color: white;
+  color: #fff;
   font-size: 1rem;
   font-weight: bold;
   text-decoration: none;
@@ -92,8 +92,12 @@ export const IconContainer = styled.div`
 
 export const IconText = styled.h3`
   font-size: 1rem;
-  color: white;
+  color: #fff;
 `;
+export const Text = styled.h3`
+font-size: 1rem;
+color: ${({ theme }) => theme.text};
+`
 
 export const DropdownMenu = styled.div`
   position: absolute;
@@ -101,8 +105,8 @@ export const DropdownMenu = styled.div`
   height: auto;
   top: 65%;
   right: 10px;
-  background: ${props => props.theme.background};
-  color: ${props => props.theme.color};
+  background-color: ${({ theme }) => theme.dropdownBackground};
+  color: ${({ theme }) => theme.text};
   color: black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -112,13 +116,13 @@ export const DropdownContainer = styled.div`
 display: flex;
 flex-direction: column;
 border-bottom: 1px solid #e0e0e0;
-background-color: ${props => props.theme.background};
+background-color: ${({ theme }) => theme.dropdownBackground};
 `
 export const DropdownItem = styled.a`
    display: flex;
   align-items: center;
   font-family: sans-serif;
-  color: ${props => props.theme.color};
+  color: ${({ theme }) => theme.text};
 
   &:hover {
     background: #f0f0f0;
@@ -127,10 +131,29 @@ export const DropdownItem = styled.a`
 
 export const LightTheme = {
   background: '#ffffff',
-  color: '#000000'
+  text: '#000000',
+  dropdownBackground: '#ffffff'
 };
 
 export const DarkTheme = {
   background: '#333333',
-  color: '#ffffff'
+  text: '#ffffff',
+  dropdownBackground: '#333333'
 };
+export const PageOverlay = styled.div` 
+  position: fixed; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1; 
+  top: 0px; 
+  left: 0; 
+  opacity: 0; 
+  pointer-events: none; 
+ 
+  &.visible { 
+    opacity: 1; 
+    pointer-events: auto; 
+    z-index:1; 
+  } 
+ 
+`;
