@@ -65,6 +65,13 @@ export const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin: 0 10px;
   }
+  .slick-track{
+    display: flex;
+  }
+  .slick-track::after{
+    content: "";
+    flex: 0 0 20px;;
+  }
 `
 export const TitleSection = styled.div`
   width: 100%;
