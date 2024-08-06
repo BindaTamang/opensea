@@ -5,9 +5,8 @@ import {
   Img,
   Item,
   TitleSection,
-  List,
+  CustomSlider,
 } from "../../Style/Card.styled";
-import Slider from "react-slick";
 import { Nav, NavLink } from "../../Style/Header.styled";
 
 const PhotoCard = ({settings, bgColor}) => {
@@ -24,15 +23,7 @@ const PhotoCard = ({settings, bgColor}) => {
   //   "linear-gradient(rgb(66, 235, 235), rgb(94, 234, 234))",
   // ];
 
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 4,
-  //   slidesToScroll: 3,
-  //   arrows: true,
-  //   beforeChange: (current, next) => setBgColor(colors[next % colors.length]),
-  // };
+  
 
   const items = [
     {
@@ -95,7 +86,7 @@ const PhotoCard = ({settings, bgColor}) => {
       style={{
         width: "100%",
         height: "330px",
-        background: bgColor,
+        background: bgColor
       }}
     >
       <Nav style={{paddingBottom: "20px", fontSize: "1.75rem"}}>
@@ -116,20 +107,20 @@ const PhotoCard = ({settings, bgColor}) => {
         <span>Photography</span>
         <span>Music</span>
       </List> */}
-      <Slider {...settings}>
+      <CustomSlider {...settings} style={{}}>
         {items.map((item, i) => (
-          <CardItem key={i} style={{ position: "relative" }}>
+          <CardItem key={i} style={{ position: "relative", marginRight: "20px"}}>
             <Img
-              style={{ width: "100%", height: "320px", position: "relative" }}
+              style={{ width: "100%", height: "320px", position: "relative"}}
             >
               <img
                 style={{
                   width: "100%",
                   height: "100%",
                   position: "absolute",
-                  aspectRatio: "1/1",
+                  aspectRatio: "1/0.5",
                   objectFit: "cover",
-                  filter: "brightness(80%)",
+                  filter: "brightness(80%)"
                 }}
                 src={item.image}
                 alt={item.title}
@@ -145,7 +136,7 @@ const PhotoCard = ({settings, bgColor}) => {
                   flexDirection: "row",
                 }}
               >
-                <span style={{ color: "#fff", fontWeight: "bold" }}>
+                <span style={{ color: "#fff", fontWeight: "bold", marginLeft: "-5px" }}>
                   {item.title}
                 </span>
                 {item.logo && (
@@ -179,7 +170,7 @@ const PhotoCard = ({settings, bgColor}) => {
             </Img>
           </CardItem>
         ))}
-      </Slider>
+      </CustomSlider>
     </CardContainer>
   );
 };

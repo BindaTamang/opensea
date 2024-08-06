@@ -1,10 +1,10 @@
 import React from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
   CardContainer,
   CardItem,
+  CustomSlider,
   DetailsRow,
   Img,
   Item,
@@ -12,15 +12,15 @@ import {
   TitleSection,
 } from "../../Style/Card.styled";
 
-const NoteableCollection = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 3,
-    arrows: true,
-  };
+const NoteableCollection = ({settings}) => {
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 5,
+  //   slidesToScroll: 3,
+  //   arrows: true,
+  // };
 
   const items = [
     {
@@ -79,7 +79,7 @@ const NoteableCollection = () => {
   return (
     <CardContainer>
       <h1>Noteable collections</h1>
-      <Slider {...settings}>
+      <CustomSlider {...settings}>
         {items.map((item, i) => (
           <CardItem key={i}>
             <Img>
@@ -107,7 +107,7 @@ const NoteableCollection = () => {
             </DetailsRow>
           </CardItem>
         ))}
-      </Slider>
+      </CustomSlider>
     </CardContainer>
   );
 };

@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import Slider from "react-slick";
 
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  
   h1 {
     font-family: sans-serif;
     text-align: left;
@@ -44,15 +46,26 @@ export const Img = styled.div`
   height: initial;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
+  aspect-ratio: 1/0.5;
+  
   img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 1/0.5;
     opacity: 1;
     inset: 0px;
     object-fit: cover;
   }
 `;
+export const CustomSlider = styled(Slider)`
+.slick-list {
+    padding-top: 15px;
+    padding-right: 10px;
+    
+  }
+  .slick-slide > div {
+    margin: 0 10px;
+  }
+`
 export const TitleSection = styled.div`
   width: 100%;
   display: flex;
@@ -68,17 +81,17 @@ export const TitleSection = styled.div`
     font-weight: 600;
     color: #333;
   }
-  i{
+  i {
     width: 20px;
-  height: 20px;
-  display: flex;
-  display: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  color: #f4f0f0;
-  background-color: #2394f0;
-  border-radius: 50%;
+    height: 20px;
+    display: flex;
+    display: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #f4f0f0;
+    background-color: #2394f0;
+    border-radius: 50%;
   }
 `;
 // export const Icon = styled.i`
@@ -92,7 +105,7 @@ export const TitleSection = styled.div`
 //   color: #f4f0f0;
 //   background-color: #2394f0;
 //   border-radius: 50%;
- 
+
 // `;
 
 export const Item = styled.div`
@@ -123,22 +136,21 @@ export const ItemDetail = styled.div`
   flex-direction: row;
 `;
 export const List = styled.ul`
-display: flex;
-flex-direction: row;
-gap: 20px;
-padding: 10px 10px 20px 10px;
-span{
-  font-family: sans-serif;
-  font-size: 16.5px;
-font-weight: bold;
-color: #fff;
-&:hover{
-  position: relative;
-  color: #000;
-  background: #a09e9a;
-  padding: 10px;
-  border-radius: 10px;
-}
-}
-
-`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px 10px 20px 10px;
+  span {
+    font-family: sans-serif;
+    font-size: 16.5px;
+    font-weight: bold;
+    color: #fff;
+    &:hover {
+      position: relative;
+      color: #000;
+      background: #a09e9a;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+`;

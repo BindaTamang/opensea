@@ -1,22 +1,21 @@
-import './App.css';
+import React, { useState } from 'react';
 import Header from './Components/Header/Header';
 import Noteablecollection from './Components/Card/Noteablecollection';
 import PhotoCard from './Components/Card/PhotoCard';
-import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [bgColor, setBgColor] = useState("linear-gradient(rgb(235, 66, 82), rgb(234, 94, 94))");
-
+  
+  const [bgColor, setBgColor] = useState('linear-gradient(to bottom, #454545, transparent 50%)');
+  
   const colors = [
-    "linear-gradient(90deg, #bb8909 100%, #794b09 35%, #dfd499 100%);",
-    "linear-gradient(rgb(66, 82, 235), rgb(94, 94, 234))",
-    "linear-gradient(rgb(82, 235, 66), rgb(94, 234, 94))",
-    "linear-gradient(rgb(235, 82, 66), rgb(234, 94, 94))",
-    "linear-gradient(rgb(66, 235, 82), rgb(94, 234, 94))",
-    "linear-gradient(rgb(82, 66, 235), rgb(94, 94, 234))",
-    "linear-gradient(rgb(235, 66, 235), rgb(234, 94, 234))",
-    "linear-gradient(rgb(66, 235, 235), rgb(94, 234, 234))",
+    'linear-gradient(180deg, #141414, #141414, #141414, transparent 70%)',
+    'linear-gradient(to bottom, #111111, #317c4a, transparent 70%)',
+    'linear-gradient(200deg, #e4ab30, #dac79d, #e49f74 transparent 50%)',
+    'linear-gradient(190deg, #020024 0%, #090979 35%, #00d4ff 100%, transparent 100%)',
+    'linear-gradient(to bottom, #111111, #317c4a, transparent 100%)'
   ];
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -24,8 +23,11 @@ function App() {
     slidesToShow: 4,
     slidesToScroll: 3,
     arrows: true,
-    beforeChange: (current, next) => setBgColor(colors[next % colors.length]),
+    beforeChange: (current, next) => setBgColor(colors[next % colors.length])
   };
+  
+  
+  
   return (
     <div className="App">
       <div className='header-section'>
@@ -35,8 +37,7 @@ function App() {
           <PhotoCard settings={settings} />
         </div>
       </div>
-      
-      <Noteablecollection/>
+      <Noteablecollection settings={settings}/>
     </div>
   );
 }
