@@ -3,8 +3,21 @@ import Header from './Components/Header/Header';
 import Noteablecollection from './Components/Card/Noteablecollection';
 import PhotoCard from './Components/Card/PhotoCard';
 import './App.css';
+import { darkTheeme, lightTheme } from './Components/shared/theme';
+import { ThemeProvider } from 'styled-components';
+import RankCollection from './Components/Table/Rank&Collection';
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+  const [toggleBar, setTogglebar] = useState(false)
+  const setMode = (mode) => {
+    window.localStorage.setItem("theme", mode)
+    setTheme(mode);
+  }
+  const toggleTheme = () => {
+    theme === "light" ? setMode("dark") : setMode("light");
+  }
+  const themeMode = theme === "light" ? lightTheme : darkTheeme;
   
   const [bgColor, setBgColor] = useState('linear-gradient(to bottom, #454545, transparent 50%)');
   
@@ -29,16 +42,20 @@ function App() {
   
   
   return (
+    <ThemeProvider theme={themeMode}>
     <div className="App">
       <div className='header-section'>
         <div className="background-wrapper" style={{ "--bg-color": bgColor }}></div>
         <div className="header-content">
-          <Header />
-          <PhotoCard settings={settings} />
-        </div>
-      </div>
+          <Header theme={theme} toggleTheme={toggleTheme} />
+        <PhotoCard settings={settings} />
+          <RankCollection/>
       <Noteablecollection settings={settings}/>
+      </div>
+      </div>
+      
     </div>
+    </ThemeProvider>
   );
 }
 

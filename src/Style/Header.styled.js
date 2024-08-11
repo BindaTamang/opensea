@@ -3,7 +3,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgb(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border: none;
   padding: 0.5rem 1rem;
   backdrop-filter: blur(10px);
@@ -14,7 +15,7 @@ export const HeaderContainer = styled.header`
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  border-right: 1px solid #fff;
+  border-right: 1px solid ${({theme}) => theme.colors.primary};
 `;
 
 export const LogoImg = styled.img`
@@ -45,7 +46,8 @@ export const NavLink = styled.a`
   padding: 0.5rem 1rem;
   border-radius: 5px;
 
-  &:hover {
+  &:hover > div {
+    display: block;
     background: rgba(255, 255, 255, 0.2);
   }
 `;
@@ -96,7 +98,8 @@ export const IconText = styled.h3`
 `;
 export const Text = styled.h3`
 font-size: 1rem;
-color: ${({ theme }) => theme.text};
+padding: 20px;
+color: ${({ theme }) => theme.colors.primary};
 `
 
 export const DropdownMenu = styled.div`
@@ -105,41 +108,41 @@ export const DropdownMenu = styled.div`
   height: auto;
   top: 65%;
   right: 10px;
-  background-color: ${({ theme }) => theme.dropdownBackground};
-  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.primary};
   color: black;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 10000;
+  z-index: 1;
 `;
 export const DropdownContainer = styled.div`
 display: flex;
 flex-direction: column;
 border-bottom: 1px solid #e0e0e0;
-background-color: ${({ theme }) => theme.dropdownBackground};
+background-color: ${({ theme }) => theme.colors.background};
 `
-export const DropdownItem = styled.a`
+export const DropdownItem = styled.div`
    display: flex;
   align-items: center;
   font-family: sans-serif;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    background: #f0f0f0;
+    background: ${({ theme }) => theme.colors.lightGray};
   }
 `;
 
-export const LightTheme = {
-  background: '#ffffff',
-  text: '#000000',
-  dropdownBackground: '#ffffff'
-};
+// export const LightTheme = {
+//   background: '#ffffff',
+//   text: '#000000',
+//   dropdownBackground: '#ffffff'
+// };
 
-export const DarkTheme = {
-  background: '#333333',
-  text: '#ffffff',
-  dropdownBackground: '#333333'
-};
+// export const DarkTheme = {
+//   background: '#333333',
+//   text: '#ffffff',
+//   dropdownBackground: '#333333'
+// };
 export const PageOverlay = styled.div` 
   position: fixed; 
   width: 100%; 
@@ -157,3 +160,34 @@ export const PageOverlay = styled.div`
   } 
  
 `;
+export const Toggle = styled.div`
+position: relative;
+width: 35px;
+height: 20px;
+cursor: pointer;
+background:${(props) => props.theme.colors.primary};
+-webkit-transition: 0.4s;
+transition: 0ms.4s;
+border-radius: 34px;
+&::before{
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: ${(props) => props.theme.colors.secondary};
+  -webkit-transition: 0ms.4s;
+  transition: 0ms.4s;
+  border-radius: 50%;
+}
+&.checked {
+    background: green;
+
+    &:before {
+      -webkit-transform: translateX(15px);
+      -ms-transform: translateX(15px);
+      transform: translateX(15px);
+    }
+  }
+`

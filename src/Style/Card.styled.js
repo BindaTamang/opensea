@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   padding: 20px;
   
+  
   h1 {
     font-family: sans-serif;
     text-align: left;
@@ -19,8 +20,6 @@ export const Card = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  width: 60%;
-  height: 309px;
   transform: translate3d(0px, 0px, 0px);
 `;
 
@@ -65,13 +64,7 @@ export const CustomSlider = styled(Slider)`
   .slick-slide > div {
     margin: 0 10px;
   }
-  .slick-track{
-    display: flex;
-  }
-  .slick-track::after{
-    content: "";
-    flex: 0 0 20px;;
-  }
+ 
 `
 export const TitleSection = styled.div`
   width: 100%;

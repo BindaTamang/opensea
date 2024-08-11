@@ -82,13 +82,7 @@ const PhotoCard = ({settings, bgColor}) => {
   ];
 
   return (
-    <CardContainer
-      style={{
-        width: "100%",
-        height: "330px",
-        background: bgColor
-      }}
-    >
+    <CardContainer>
       <Nav style={{paddingBottom: "20px", fontSize: "1.75rem"}}>
       <NavLink href="#">All</NavLink>
       <NavLink href="#">Art</NavLink>
@@ -107,9 +101,9 @@ const PhotoCard = ({settings, bgColor}) => {
         <span>Photography</span>
         <span>Music</span>
       </List> */}
-      <CustomSlider {...settings} style={{}}>
+      <CustomSlider {...settings}>
         {items.map((item, i) => (
-          <CardItem key={i} style={{ position: "relative", marginRight: "20px"}}>
+          <CardItem key={i} style={{ position: "relative", marginRight: "20px", overflow: "hidden"}}>
             <Img
               style={{ width: "100%", height: "320px", position: "relative", paddingRight: "10px"}}
             >
