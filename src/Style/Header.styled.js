@@ -34,8 +34,8 @@ export const LogoImg = styled.img`
 export const LogoText = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
-  color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+  /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
   padding-right: 20px;
 `;
 
@@ -45,8 +45,8 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled.a`
-   color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+   /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
   font-size: 1.2rem;
   //font-weight: bold;
   text-decoration: none;
@@ -74,8 +74,8 @@ export const SearchContainer = styled.div`
 `;
 export const ShortcutKeyIcon = styled.div`
   margin-left: 0.5rem;
-  color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+  /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
   background: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#DBDBDB" : "#555555") : "#A3A3A3"};
   padding: 0.2rem 0.4rem;
@@ -86,8 +86,8 @@ export const ShortcutKeyIcon = styled.div`
 export const SearchInput = styled.input`
   border: none;
   background: none;
-  color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+  /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
   margin-left: 0.5rem;
   outline: none;
 
@@ -102,16 +102,16 @@ export const SearchInput = styled.input`
 export const ActionIcons = styled.div`
   display: flex;
   gap: 1rem;
-  color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+  /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
 `;
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   background: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#EBEBEB" : "#333333") : "#555555"};
-  color: ${({ isScrolled, theme }) =>
-    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+  /* color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"}; */
   border-radius: 10px;
 `;
 

@@ -83,7 +83,7 @@ const Header = ({ theme, toggleTheme }) => {
     <HeaderContainer isScrolled={isScrolled} theme={theme}>
       <Logo>
         <LogoImg src="/images/opensea-logo.svg" alt="Logo" />
-        <LogoText isScrolled={isScrolled} theme={theme}>OpenSea</LogoText>
+        <LogoText>OpenSea</LogoText>
       </Logo>
       <Nav style={{ marginLeft: "-270px" }}>
         <NavLink
@@ -94,8 +94,8 @@ const Header = ({ theme, toggleTheme }) => {
         >
           Drops
           {isDropdownOpen && (
-            <DropdownMenu style={{background: "#ffffff", left: "30px", margin: "10px" }}>
-              <DropdownContainer style={{background: "#ffffff",  border: "none"}} >
+            <DropdownMenu style={{ left: "30px", margin: "10px" }}>
+              <DropdownContainer style={{ border: "none"}} >
                 <DropdownItem style={{ display: "flex", flexDirection: "column", padding: "5px", alignItems:"flex-start"}}>
                   <span style={{color: "#111111", fontFamily: "sans-serif", paddingBottom: "10px"}}>Featured</span>
                   <span style={{color: "#111111", fontFamily: "sans-serif"}}>Learn More</span>
@@ -118,9 +118,9 @@ const Header = ({ theme, toggleTheme }) => {
             title="Login"
             style={{ padding: "10px", fontSize: "1rem" }}
           />
-          <IconText style={{ fontSize: "1rem", fontFamily: "sans-serif", paddingRight: "10px" }}>
+          <LogoText style={{ fontSize: "1rem", fontFamily: "sans-serif", paddingRight: "10px" }}>
             Login
-          </IconText>
+          </LogoText>
         </IconContainer>
         <IconContainer ref={profileDropdownRef} onClick={toggleProfileDropdown}>
           <FaRegUserCircle
