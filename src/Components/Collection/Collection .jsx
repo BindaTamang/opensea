@@ -13,6 +13,7 @@ import {
 import { SlGlobe } from "react-icons/sl";
 import { BsThreeDots } from "react-icons/bs";
 import Items from "./Items";
+import Footer from "./Footer";
 
 const Collection = () => {
   const [isShowMore, setShowMore] = useState(false);
@@ -93,6 +94,7 @@ const Collection = () => {
         </Iconpg>
       </ParagraphContainer>
       <Items/>
+      <Footer/>
     </>
   );
 };

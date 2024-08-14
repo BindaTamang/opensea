@@ -116,36 +116,7 @@ export const Div = styled.div`
     border: #141414;
   }
 `;
-export const Sidebar = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  //margin-left: 30px;
-  width: 200px;
-  height: auto;
-  //gap: 10px;
-  box-sizing: border-box;
-`;
-export const SidebarItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  //border-bottom: 1px solid;
-  gap: 5px;
-  padding-left: 17px;
-  div {
-    display: flex;
-    //flex-direction: row;
-    align-items: center;
-    //justify-content: center;
-    gap: 20px;
-    font-family: sans-serif;
-    font-size: 0.88rem;
-    font-weight: 100;
-  }
-`;
+
 export const Body = styled.div`
   flex: 1;
   display: flex;
@@ -159,6 +130,100 @@ export const ItemBody = styled.div`
   border-top: 1px solid #d1d1d1;
   //margin: 0 30px  0;
 `;
-export const SidebarIcon = styled.div`
-padding-left: 80px;
+export const SidebarConatainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  //margin-left: 30px;
+  width: 300px;
+  height: auto;
+ background-color: #f9f9f9;
+ border-right: 1px solid #e5e5e5;
+`;
+export const Section = styled.div`
+display: grid;
+  grid-template-columns: 1fr auto;
+  //align-items: center;
+  padding: 15px 15px; 
+  width: 90%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0; 
+  }
+`;
+
+export const SectionTitle = styled.div`
+  font-weight: bold;
+  text-align: left;
+  z-index: 1;
+  cursor: pointer;
+`;
+export const SectionIcon = styled.div`
+text-align: right;
+`
+
+export const SectionContent = styled.div`
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Button = styled.button`
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: ${props => props.active ? '#000' : '#f0f0f0'};
+  color: ${props => props.active ? '#fff' : '#000'};
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: ${props => props.active ? '#333' : '#ddd'};
+  }
+`;
+
+export const ToggleSwitch = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const SwitchLabel = styled.label`
+  font-size: 14px;
+  margin-right: 8px;
+`;
+
+export const SwitchInput = styled.input.attrs({ type: 'checkbox' })`
+  position: relative;
+  width: 40px;
+  height: 20px;
+  appearance: none;
+  background-color: #ccc;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:checked {
+    background-color: #4caf50;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    transform: ${props => props.checked ? 'translateX(20px)' : 'translateX(0)'};
+  }
+`;
+export const GridSection = styled.div`
+display: grid;
+padding: 10px;
+width: 97%;
 `
