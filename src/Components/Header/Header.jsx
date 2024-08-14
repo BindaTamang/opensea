@@ -36,9 +36,9 @@ import { IoIosArrowForward } from "react-icons/io";
 import Switch from "./Switch";
 
 const Header = ({ theme, toggleTheme }) => {
-  const isDarkTheme = theme === "dark";
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
 
@@ -69,11 +69,21 @@ const Header = ({ theme, toggleTheme }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50); 
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <HeaderContainer>
+    <HeaderContainer isScrolled={isScrolled} theme={theme}>
       <Logo>
-        <LogoImg src="./images/opensea-logo.svg" alt="Logo" />
-        <LogoText>OpenSea</LogoText>
+        <LogoImg src="/images/opensea-logo.svg" alt="Logo" />
+        <LogoText isScrolled={isScrolled} theme={theme}>OpenSea</LogoText>
       </Logo>
       <Nav style={{ marginLeft: "-270px" }}>
         <NavLink
@@ -98,7 +108,7 @@ const Header = ({ theme, toggleTheme }) => {
         <NavLink href="#">Create</NavLink>
       </Nav>
       <SearchContainer>
-        <FaSearch color="white" />
+        <FaSearch />
         <SearchInput type="text" placeholder="Search" />
         <ShortcutKeyIcon>/</ShortcutKeyIcon>
       </SearchContainer>
@@ -108,13 +118,7 @@ const Header = ({ theme, toggleTheme }) => {
             title="Login"
             style={{ padding: "10px", fontSize: "1rem" }}
           />
-          <IconText
-            style={{
-              fontSize: "1rem",
-              fontFamily: "sans-serif",
-              paddingRight: "10px",
-            }}
-          >
+          <IconText style={{ fontSize: "1rem", fontFamily: "sans-serif", paddingRight: "10px" }}>
             Login
           </IconText>
         </IconContainer>
@@ -137,17 +141,11 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <MdOutlineHandshake
-                    title="holding hand"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <MdOutlineHandshake title="holding hand" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Deals</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <LuPencilRuler
-                    title="studio"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <LuPencilRuler title="studio" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Studio</Text>
                 </DropdownItem>
                 <DropdownItem>
@@ -157,22 +155,13 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <IoSettingsOutline
-                    title="setting"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <IoSettingsOutline title="setting" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Settings</Text>
                 </DropdownItem>
                 <DropdownItem>
                   <CiGlobe title="user" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Language</Text>
-                  <span
-                    style={{
-                      paddingLeft: "60px",
-                      display: "flex",
-                      flexDirection: "row",
-                    }}
-                  >
+                  <span style={{ paddingLeft: "60px", display: "flex", flexDirection: "row" }}>
                     en <IoIosArrowForward />{" "}
                   </span>
                 </DropdownItem>
@@ -184,24 +173,15 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <LuGraduationCap
-                    title="learn"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <LuGraduationCap title="learn" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Learn</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <PiNewspaper
-                    title="help center"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <PiNewspaper title="help center" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Help center</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <MdOutlineContactSupport
-                    title="support"
-                    style={{ paddingLeft: "20px" }}
-                  />
+                  <MdOutlineContactSupport title="support" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Support</Text>
                 </DropdownItem>
               </DropdownContainer>

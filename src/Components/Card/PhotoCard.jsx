@@ -82,8 +82,8 @@ const PhotoCard = ({settings, bgColor}) => {
   ];
 
   return (
-    <CardContainer>
-      <Nav style={{paddingBottom: "20px", fontSize: "1.75rem"}}>
+    <CardContainer bgColor={bgColor}>
+      <Nav style={{paddingBottom: "20px", paddingTop: "65px", fontSize: "1.75rem"}}>
       <NavLink href="#">All</NavLink>
       <NavLink href="#">Art</NavLink>
       <NavLink href="#">Gaming</NavLink>
@@ -105,14 +105,13 @@ const PhotoCard = ({settings, bgColor}) => {
         {items.map((item, i) => (
           <CardItem key={i} style={{ position: "relative", marginRight: "20px", overflow: "hidden"}}>
             <Img
-              style={{ width: "100%", height: "320px", position: "relative", paddingRight: "10px"}}
+              style={{ width: "100%", height: "320px", position: "relative", paddingRight: "10px",  aspectRatio: "1/0.5",}}
             >
               <img
                 style={{
                   width: "100%",
                   height: "100%",
                   position: "absolute",
-                  aspectRatio: "1/0.5",
                   objectFit: "cover",
                   filter: "brightness(80%)"
                 }}

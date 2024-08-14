@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Slider from "react-slick";
 
 export const CardContainer = styled.div`
+background: ${({ bgColor }) => bgColor || 'transparent'};
   display: flex;
   flex-direction: column;
   padding: 20px;
