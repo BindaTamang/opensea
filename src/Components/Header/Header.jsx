@@ -36,6 +36,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import Switch from "./Switch";
 
 const Header = ({ theme, toggleTheme }) => {
+  //const isDarkTheme = theme === "dark";
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,7 +84,7 @@ const Header = ({ theme, toggleTheme }) => {
     <HeaderContainer isScrolled={isScrolled} theme={theme}>
       <Logo>
         <LogoImg src="/images/opensea-logo.svg" alt="Logo" />
-        <LogoText>OpenSea</LogoText>
+        <LogoText isScrolled={isScrolled} theme={theme}>OpenSea</LogoText>
       </Logo>
       <Nav style={{ marginLeft: "-270px" }}>
         <NavLink
@@ -91,11 +92,12 @@ const Header = ({ theme, toggleTheme }) => {
           onMouseEnter={toggleDropdown}
           onMouseLeave={() => setIsDropdownOpen(false)}
           ref={dropdownRef}
+          isScrolled={isScrolled} theme={theme}
         >
           Drops
           {isDropdownOpen && (
-            <DropdownMenu style={{ left: "30px", margin: "10px" }}>
-              <DropdownContainer style={{ border: "none"}} >
+            <DropdownMenu style={{background: "#ffffff", left: "30px", margin: "10px" }}>
+              <DropdownContainer style={{background: "#ffffff",  border: "none"}} >
                 <DropdownItem style={{ display: "flex", flexDirection: "column", padding: "5px", alignItems:"flex-start"}}>
                   <span style={{color: "#111111", fontFamily: "sans-serif", paddingBottom: "10px"}}>Featured</span>
                   <span style={{color: "#111111", fontFamily: "sans-serif"}}>Learn More</span>
@@ -104,25 +106,32 @@ const Header = ({ theme, toggleTheme }) => {
             </DropdownMenu>
           )}
         </NavLink>
-        <NavLink href="#">Stats</NavLink>
-        <NavLink href="#">Create</NavLink>
+        <NavLink href="#" isScrolled={isScrolled} theme={theme}>Stats</NavLink>
+        <NavLink href="#" isScrolled={isScrolled} theme={theme}>Create</NavLink>
       </Nav>
-      <SearchContainer>
+      <SearchContainer isScrolled={isScrolled} theme={theme}>
         <FaSearch />
         <SearchInput type="text" placeholder="Search" />
-        <ShortcutKeyIcon>/</ShortcutKeyIcon>
+        <ShortcutKeyIcon isScrolled={isScrolled} theme={theme}>/</ShortcutKeyIcon>
       </SearchContainer>
       <ActionIcons>
-        <IconContainer>
+        <IconContainer isScrolled={isScrolled} theme={theme}>
           <MdOutlineWallet
             title="Login"
             style={{ padding: "10px", fontSize: "1rem" }}
           />
-          <LogoText style={{ fontSize: "1rem", fontFamily: "sans-serif", paddingRight: "10px" }}>
+          <IconText
+          isScrolled={isScrolled} theme={theme}
+            style={{
+              fontSize: "1rem",
+              fontFamily: "sans-serif",
+              paddingRight: "10px",
+            }}
+          >
             Login
-          </LogoText>
+          </IconText>
         </IconContainer>
-        <IconContainer ref={profileDropdownRef} onClick={toggleProfileDropdown}>
+        <IconContainer ref={profileDropdownRef} onClick={toggleProfileDropdown} isScrolled={isScrolled} theme={theme}>
           <FaRegUserCircle
             title="Profile"
             style={{ padding: "10px 20px", fontSize: "1.1rem" }}
@@ -141,11 +150,17 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <MdOutlineHandshake title="holding hand" style={{ paddingLeft: "20px" }} />
+                  <MdOutlineHandshake
+                    title="holding hand"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Deals</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <LuPencilRuler title="studio" style={{ paddingLeft: "20px" }} />
+                  <LuPencilRuler
+                    title="studio"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Studio</Text>
                 </DropdownItem>
                 <DropdownItem>
@@ -155,13 +170,22 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <IoSettingsOutline title="setting" style={{ paddingLeft: "20px" }} />
+                  <IoSettingsOutline
+                    title="setting"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Settings</Text>
                 </DropdownItem>
                 <DropdownItem>
                   <CiGlobe title="user" style={{ paddingLeft: "20px" }} />
                   <Text style={{ padding: "4px 15px" }}>Language</Text>
-                  <span style={{ paddingLeft: "60px", display: "flex", flexDirection: "row" }}>
+                  <span
+                    style={{
+                      paddingLeft: "60px",
+                      display: "flex",
+                      flexDirection: "row",
+                    }}
+                  >
                     en <IoIosArrowForward />{" "}
                   </span>
                 </DropdownItem>
@@ -173,15 +197,24 @@ const Header = ({ theme, toggleTheme }) => {
               </DropdownContainer>
               <DropdownContainer>
                 <DropdownItem>
-                  <LuGraduationCap title="learn" style={{ paddingLeft: "20px" }} />
+                  <LuGraduationCap
+                    title="learn"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Learn</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <PiNewspaper title="help center" style={{ paddingLeft: "20px" }} />
+                  <PiNewspaper
+                    title="help center"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Help center</Text>
                 </DropdownItem>
                 <DropdownItem>
-                  <MdOutlineContactSupport title="support" style={{ paddingLeft: "20px" }} />
+                  <MdOutlineContactSupport
+                    title="support"
+                    style={{ paddingLeft: "20px" }}
+                  />
                   <Text style={{ padding: "4px 15px" }}>Support</Text>
                 </DropdownItem>
               </DropdownContainer>
@@ -192,7 +225,7 @@ const Header = ({ theme, toggleTheme }) => {
             className={isProfileDropdownOpen ? "visible" : null}
           />
         </IconContainer>
-        <IconContainer>
+        <IconContainer isScrolled={isScrolled} theme={theme}>
           <FaShoppingCart
             title="Cart"
             style={{ padding: "10px 20px", fontSize: "1rem" }}
