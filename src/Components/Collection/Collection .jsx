@@ -30,6 +30,8 @@ const Collection = () => {
     These images convey transcendent encounters, each imparting a sense of wonder in the presence of the unknown. 
     Polaris, the North Star, functions as a metaphor for the presence I feel emanating from these places, 
     the only constant in environments that are otherwise in constant flux.`;
+
+    const truncatedText = text.slice(0, 100);
   return (
     <>
       <ImageSection>  
@@ -72,15 +74,7 @@ const Collection = () => {
       <ParagraphContainer>
         <Paragraph>
           <p>
-          {isShowMore ? (
-              text.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                  {line.trim() ? <span>{line}<br /></span> : <br />}
-                </React.Fragment>
-              ))
-            ) : (
-              `${text.slice(0, 80)}...`
-            )}
+          {isShowMore ? text : `${truncatedText}...`}
             <HideOrShowButton onClick={() => setShowMore(!isShowMore)}>
               {isShowMore ? "Show less" : "Show more"}
             </HideOrShowButton>
