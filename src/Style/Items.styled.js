@@ -165,6 +165,7 @@ text-align: right;
 `
 
 export const SectionContent = styled.div`
+padding-top: 10px;
   padding-left: 10px;
   display: flex;
   flex-direction: column;
@@ -186,12 +187,35 @@ export const Button = styled.button`
 
 export const ToggleSwitch = styled.div`
   display: flex;
-  align-items: center;
+  padding-top: 20px;
+  text-align: center;
+  justify-content: space-between;
+  width: 100%;
+  
+`;
+export const SwitchContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  padding-left: 15px;
 `;
 
-export const SwitchLabel = styled.label`
-  font-size: 14px;
-  margin-right: 8px;
+export const SwitchLabel = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  
+`;
+
+export const SwitchDescription = styled.small`
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin-top: 5px;
+  text-align: left;
+  max-width: 130px; 
+  word-wrap: break-word;
+  white-space: normal;
 `;
 
 export const SwitchInput = styled.input.attrs({ type: 'checkbox' })`
@@ -226,4 +250,105 @@ export const GridSection = styled.div`
 display: grid;
 padding: 10px;
 width: 97%;
+`
+export const ButtonSectionContent = styled.div`
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+padding: 10px;
+`
+export const PriceButton = styled(Button)`
+display: flex;
+justify-content: space-between;
+border: none;
+border-radius: 10px;
+max-height: 50px;
+padding: 5px 10px;
+h3{
+  font-size: 1.2em;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+`
+export const MinMaxConatiner = styled.div`
+display: flex;
+align-items: center;
+//justify-content: space-between;
+gap:1rem;
+`
+export const MaxMinButton = styled(Button)`
+width: 100px;
+height: 50px;
+font-size: 1em;
+
+`
+export const ApplyButton = styled(Button)`
+text-align: center;
+font-size: 1rem;
+font-weight: 600;
+background: #3388FF;
+color: #fff;
+`
+export const CurrencySearch = styled(ItemSearch)`
+ display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 5px 10px;
+  margin-left: 3px;
+  border-radius: 10px;
+  width: 90%;
+border: 1px solid #E6E6E6;
+
+`
+
+export const CurrencySearchInput = styled(ItemSearchInput)`
+border: none;
+  outline: none;
+  background: none;
+  padding-left: 10px;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  
+  &::placeholder {
+    color: #999;
+  }
+`
+export const CheckboxWrapper = styled.label`
+display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+
+`
+export const InputCheckbox = styled.input.attrs({type: "checkbox"})`
+appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #E6E6E6;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+
+  &:checked {
+    background-color: #3388FF;
+  }
+
+  &:checked::before {
+    content: '✔';
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    bottom: 3px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+  }
+`
+export const CheckboxDetail = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 3rem;
 `
