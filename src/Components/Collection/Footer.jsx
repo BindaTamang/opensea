@@ -13,6 +13,7 @@ const Footer = () => {
         <FooterSwitchInput checked={sweep} onClick={handleSweep}/>
         <FooterButton><span>Make collection Offer</span></FooterButton>
     </FooterToggleSwitch>
+    
    </FooterContainer>
   )
 }

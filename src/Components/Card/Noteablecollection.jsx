@@ -12,7 +12,7 @@ import {
   TitleSection,
 } from "../../Style/Card.styled";
 
-const NoteableCollection = ({settings}) => {
+const NoteableCollection = ({ settings }) => {
   // const settings = {
   //   dots: true,
   //   infinite: true,
@@ -88,19 +88,32 @@ const NoteableCollection = ({settings}) => {
             <TitleSection>
               <span>{item.title}</span>
               {item.logo && (
-                <img style={{display: "inline-block", width: "20px", height: "20px", paddingLeft: "2px"}} src={item.logo} alt="logo"/>
+                <img
+                  style={{
+                    display: "inline-block",
+                    width: "20px",
+                    height: "20px",
+                    paddingLeft: "2px",
+                  }}
+                  src={item.logo}
+                  alt="logo"
+                />
               )}
             </TitleSection>
             <DetailsRow>
               {item.floor.map((floorItem, j) => (
                 <ItemDetail key={j}>
                   <Item>
-                    <span style={{paddingLeft: "15px"}}>{floorItem.name}</span>
-                    <p style={{paddingLeft: "15px"}}>{floorItem.value}</p>
+                    <span style={{ paddingLeft: "15px" }}>
+                      {floorItem.name}
+                    </span>
+                    <p style={{ paddingLeft: "15px" }}>{floorItem.value}</p>
                   </Item>
                   <Item>
-                    <span style={{paddingRight: "20px"}}>{floorItem.description}</span>{" "}
-                    <p style={{paddingRight: "25px"}}>{floorItem.desValue}</p>
+                    <span style={{ paddingRight: "20px" }}>
+                      {floorItem.description}
+                    </span>{" "}
+                    <p style={{ paddingRight: "25px" }}>{floorItem.desValue}</p>
                   </Item>
                 </ItemDetail>
               ))}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
@@ -11,16 +12,26 @@ export const HeaderContainer = styled.header`
   backdrop-filter: blur(10px);
   border: none;
   padding: 0.5rem 1rem;
-  backdrop-filter: blur(10px);
   position: fixed;
   z-index: 1000;
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 5px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 `;
 
 export const Logo = styled.div`
   display: flex;
   align-items: center;
   border-right: 1px solid ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 768px) {
+    border-right: none;
+    margin-bottom: 10px;
+  }
 `;
 
 export const LogoImg = styled.img`
@@ -37,18 +48,26 @@ export const LogoText = styled.h1`
   color: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
   padding-right: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    padding-right: 0;
+  }
 `;
 
 export const Nav = styled.nav`
   display: flex;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavLink = styled.a`
-   color: ${({ isScrolled, theme }) =>
+  color: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
   font-size: 1.2rem;
-  //font-weight: bold;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -57,6 +76,10 @@ export const NavLink = styled.a`
     display: block;
     background: ${({ theme }) =>
       theme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.1)"};
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -71,7 +94,12 @@ export const SearchContainer = styled.div`
     background: ${({ isScrolled, theme }) =>
       isScrolled ? (theme === "light" ? "#D6D6D6" : "#444444") : "#555555"};
   }
+  @media screen and (max-width: 768px) {
+    display: ${({ isIconVisible }) => (isIconVisible ? "flex" : "none")};
+    background: none;
+  }
 `;
+
 export const ShortcutKeyIcon = styled.div`
   margin-left: 0.5rem;
   color: ${({ isScrolled, theme }) =>
@@ -81,6 +109,10 @@ export const ShortcutKeyIcon = styled.div`
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
   font-size: 0.8rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -97,6 +129,11 @@ export const SearchInput = styled.input`
     font-size: 1rem;
     font-family: sans-serif;
   }
+
+  @media (max-width: 768px) {
+   display: none;
+
+  }
 `;
 
 export const ActionIcons = styled.div`
@@ -104,7 +141,12 @@ export const ActionIcons = styled.div`
   gap: 1rem;
   color: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
@@ -113,13 +155,32 @@ export const IconContainer = styled.div`
   color: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
   border-radius: 10px;
+
+  @media screen and (max-width: 768px) {
+    > * {
+      display: none; //hide defaul 
+    }
+
+    // Only specific classes
+    .login-container,
+    .menu-container {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  
 `;
 
 export const IconText = styled.h3`
   font-size: 1rem;
   color: ${({ isScrolled, theme }) =>
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 export const Text = styled.h3`
   font-size: 1rem;
   padding: 20px;
@@ -134,17 +195,18 @@ export const DropdownMenu = styled.div`
   right: 10px;
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.primary};
-  color: black;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
 `;
+
 export const DropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #e0e0e0;
   background-color: ${({ theme }) => theme.colors.background};
 `;
+
 export const DropdownItem = styled.div`
   display: flex;
   align-items: center;
@@ -156,26 +218,16 @@ export const DropdownItem = styled.div`
   }
 `;
 
-// export const LightTheme = {
-//   background: '#ffffff',
-//   text: '#000000',
-//   dropdownBackground: '#ffffff'
-// };
-
-// export const DarkTheme = {
-//   background: '#333333',
-//   text: '#ffffff',
-//   dropdownBackground: '#333333'
-// };
 export const PageOverlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
-  top: 0px;
+  top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease;
 
   &.visible {
     opacity: 1;
@@ -183,15 +235,16 @@ export const PageOverlay = styled.div`
     z-index: 1;
   }
 `;
+
 export const Toggle = styled.div`
   position: relative;
   width: 35px;
   height: 20px;
   cursor: pointer;
   background: ${(props) => props.theme.colors.primary};
-  -webkit-transition: 0.4s;
-  transition: 0ms.4s;
+  transition: background 0.4s;
   border-radius: 34px;
+
   &::before {
     position: absolute;
     content: "";
@@ -200,17 +253,23 @@ export const Toggle = styled.div`
     left: 3px;
     bottom: 3px;
     background: ${(props) => props.theme.colors.secondary};
-    -webkit-transition: 0ms.4s;
-    transition: 0ms.4s;
+    transition: transform 0.4s;
     border-radius: 50%;
   }
+
   &.checked {
     background: green;
 
-    &:before {
-      -webkit-transform: translateX(15px);
-      -ms-transform: translateX(15px);
+    &::before {
       transform: translateX(15px);
     }
+  }
+`;
+
+export const MenuDropdown = styled(DropdownMenu)`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;

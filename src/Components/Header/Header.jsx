@@ -17,12 +17,13 @@ import {
   SearchInput,
   ShortcutKeyIcon,
   PageOverlay,
+  MenuDropdown,
 } from "../../Style/Header.styled";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
-import { MdOutlineWallet } from "react-icons/md";
+import { FaRegCalendarAlt, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { MdOutlineBarChart, MdOutlineWallet } from "react-icons/md";
 import { MdOutlineHandshake } from "react-icons/md";
 import { LuPencilRuler } from "react-icons/lu";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoMenu, IoSettingsOutline } from "react-icons/io5";
 import { CiGlobe } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -34,12 +35,16 @@ import { MdOutlineContactSupport } from "react-icons/md";
 import { SiOpensea } from "react-icons/si";
 import { IoIosArrowForward } from "react-icons/io";
 import Switch from "./Switch";
+import { ImPencil } from "react-icons/im";
+import { RxCross1 } from "react-icons/rx";
 
 const Header = ({ theme, toggleTheme }) => {
   //const isDarkTheme = theme === "dark";
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isIconVisible, setIsIconVisible] = useState(false)
   const dropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
 
@@ -75,18 +80,24 @@ const Header = ({ theme, toggleTheme }) => {
       const scrollTop = window.scrollY;
       setIsScrolled(scrollTop > 50); 
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(()=> {
+    if (window.innerWidth <= 768){
+      setIsIconVisible(true);
+    }else{
+      setIsIconVisible(false)
+    }
+  }, [])
   return (
     <HeaderContainer isScrolled={isScrolled} theme={theme}>
       <Logo>
         <LogoImg src="/images/opensea-logo.svg" alt="Logo" />
         <LogoText isScrolled={isScrolled} theme={theme}>OpenSea</LogoText>
       </Logo>
-      <Nav style={{ marginLeft: "-270px" }}>
+      <Nav className="nav" style={{ marginLeft: "-270px" }}>
         <NavLink
           href="#"
           onMouseEnter={toggleDropdown}
@@ -109,13 +120,13 @@ const Header = ({ theme, toggleTheme }) => {
         <NavLink href="#" isScrolled={isScrolled} theme={theme}>Stats</NavLink>
         <NavLink href="#" isScrolled={isScrolled} theme={theme}>Create</NavLink>
       </Nav>
-      <SearchContainer isScrolled={isScrolled} theme={theme}>
+      <SearchContainer isScrolled={isScrolled} theme={theme} isIconVisible={isIconVisible}>
         <FaSearch />
         <SearchInput type="text" placeholder="Search" />
         <ShortcutKeyIcon isScrolled={isScrolled} theme={theme}>/</ShortcutKeyIcon>
       </SearchContainer>
       <ActionIcons>
-        <IconContainer isScrolled={isScrolled} theme={theme}>
+        <IconContainer className="login-container" isScrolled={isScrolled} theme={theme}>
           <MdOutlineWallet
             title="Login"
             style={{ padding: "10px", fontSize: "1rem" }}
@@ -131,7 +142,7 @@ const Header = ({ theme, toggleTheme }) => {
             Login
           </IconText>
         </IconContainer>
-        <IconContainer ref={profileDropdownRef} onClick={toggleProfileDropdown} isScrolled={isScrolled} theme={theme}>
+        <IconContainer className="profile-container" ref={profileDropdownRef} onClick={toggleProfileDropdown} isScrolled={isScrolled} theme={theme}>
           <FaRegUserCircle
             title="Profile"
             style={{ padding: "10px 20px", fontSize: "1.1rem" }}
@@ -225,11 +236,58 @@ const Header = ({ theme, toggleTheme }) => {
             className={isProfileDropdownOpen ? "visible" : null}
           />
         </IconContainer>
-        <IconContainer isScrolled={isScrolled} theme={theme}>
+        <IconContainer className="cart-container" isScrolled={isScrolled} theme={theme}>
           <FaShoppingCart
             title="Cart"
             style={{ padding: "10px 20px", fontSize: "1rem" }}
           />
+        </IconContainer>
+        <IconContainer className="menu-container">
+         {isMenuOpen ? ( <RxCross1 onClick={() => setMenuOpen(!isMenuOpen)}/>
+        ): (
+          <IoMenu onClick={() => setMenuOpen(!isMenuOpen)}/>
+           )}
+            {isMenuOpen && (
+              <MenuDropdown>
+                <DropdownContainer>
+                <div>
+                <FaRegCalendarAlt/>
+                <Text>Drops</Text>
+                </div>
+                <div>
+                  <MdOutlineBarChart/>
+                  <Text>Status</Text>
+                </div>
+                <div>
+                  <PiNewspaper/>
+                  <Text>Resources</Text>
+                </div>
+                <div>
+                  <ImPencil/>
+                  <Text>Create</Text>
+                </div>
+                <div>
+                  <Text>OpenSea Pro</Text>
+                </div>
+                <div>
+                <CiGlobe title="user" style={{ paddingLeft: "20px" }} />
+                  <Text style={{ padding: "4px 15px" }}>Language</Text>
+                  <span
+                    style={{
+                      paddingLeft: "60px",
+                      display: "flex",
+                      flexDirection: "row",
+                    }}
+                  >
+                    en <IoIosArrowForward />{" "}
+                  </span>
+                </div>
+                <div><GoMoon title="night mode" style={{ paddingLeft: "20px" }} />
+                  <Text style={{ padding: "4px 15px" }}>Night Mode</Text>
+                  <Switch toggleTheme={toggleTheme} /></div>
+              </DropdownContainer>
+              </MenuDropdown>
+            )}
         </IconContainer>
       </ActionIcons>
     </HeaderContainer>

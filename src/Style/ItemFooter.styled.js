@@ -23,6 +23,10 @@ export const FooterSwitchLabel = styled.label`
   font-weight: 600;
   padding-left: 80px;
   padding-right: 10px;
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    padding-right: 5px;
+  }
 `;
 
 export const FooterSwitchInput = styled.input.attrs({ type: 'checkbox' })`
@@ -52,6 +56,15 @@ export const FooterSwitchInput = styled.input.attrs({ type: 'checkbox' })`
     transition: transform 0.3s ease-in-out;
     transform: ${props => props.checked ? 'translateX(20px)' : 'translateX(0)'};
   }
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 15px;
+
+    &::before {
+      width: 12px;
+      height: 12px;
+    }
+  }
 `;
 export const FooterButton = styled.button`
 border-radius: 20px;
@@ -64,5 +77,9 @@ span{
     font-size: 1rem;
     color: #fff;
     font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+  margin-left: 30em;
+  
 }
 `

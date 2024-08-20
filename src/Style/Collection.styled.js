@@ -10,10 +10,19 @@ export const ImageSection = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   color: white;
-  object-fit: cover;
   padding-left: 30px;
-  font-family: sans-serif;
   padding-bottom: 20px;
+  font-family: sans-serif;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    height: 350px;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -32,6 +41,12 @@ export const ImageContainer = styled.div`
     object-fit: cover;
     border-radius: 20px;
   }
+  @media screen and (max-width: 768px) {
+    top: 40%;
+    
+  }
+ 
+
 `;
 
 export const Details = styled.div`
@@ -44,13 +59,16 @@ export const Details = styled.div`
     font-size: 1rem;
     margin-bottom: 10px;
   }
+
   p {
     font-size: 1rem;
   }
+
   div {
     display: flex;
     flex-direction: row;
   }
+
   img {
     display: inline-block;
     width: 20px;
@@ -58,6 +76,27 @@ export const Details = styled.div`
     padding-left: 5px;
     padding-top: 13px;
   }
+  @media screen and (max-width: 768px){
+    margin-top: 190px;
+    h2{
+      font-size: 1em;
+      margin-bottom:10px;
+    }
+    p{
+      font-size: 1em;
+      margin-top: 5px;
+      
+    }
+    img{
+      width: 18px;
+      height: 18px;
+      padding-left:7px;
+      padding-top: 9px;
+    }
+    
+  }
+
+  
 `;
 
 export const Stats = styled.div`
@@ -79,13 +118,35 @@ export const Stats = styled.div`
       font-size: 1rem;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: -13px;
+    padding-bottom: 10px;
+    div {
+      text-align: start;
+      h3 {
+      font-size: 0.90em;
+      margin-bottom: 0.25em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+    }
+  }
 `;
+
 export const ParagraphContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  //justify-content: flex-start;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    
+  } 
 `;
 
 export const Paragraph = styled.div`
@@ -97,11 +158,18 @@ export const Paragraph = styled.div`
   padding-top: 10px;
   padding-left: 30px;
   font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5em;
-  letter-spacing: 1px;
+  font-weight: 500;
+  //line-height: 1.5em;
+  //letter-spacing: 1px;
   margin-bottom: 1.6em;
   width: 220px;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 10px;
+    font-size: 1em;
+    font-family: sans-serif;
+    width: 100%;
+  }
 `;
 
 export const Iconpg = styled.div`
@@ -111,6 +179,10 @@ export const Iconpg = styled.div`
   padding-right: 30px;
   padding-top: 10px;
   font-size: 25px;
+
+  @media screen and (max-width: 768px) {
+   display: none;
+  }
 `;
 
 export const HideOrShowButton = styled.button`
@@ -125,22 +197,37 @@ export const HideOrShowButton = styled.button`
   &:hover {
     background-color: #27ae60;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
 `;
+
 export const PgDetails = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
+
   div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1rem;
+
     span {
       font-size: 1rem;
     }
+
     p {
       font-size: 1rem;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    padding-left: 20px;
+    gap: 0.5rem;
   }
 `;

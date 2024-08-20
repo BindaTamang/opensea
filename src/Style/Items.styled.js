@@ -40,10 +40,10 @@ align-items: center; */
 
   div {
     img {
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       background: #ebebeb;
-      //border-radius: 10px;
+      border-radius: 5px;
       margin-top: 10px;
     }
     display: flex;
@@ -60,6 +60,20 @@ align-items: center; */
       font-family: sans-serif;
     }
   }
+  @media screen and (max-width: 768px) {
+    div{
+      img{
+        width: 40px;
+        height: 40px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+      span, p{
+        display: none;
+      }
+    }
+    
+  }
 `;
 export const ItemSearch = styled.div`
   display: flex;
@@ -74,6 +88,12 @@ export const ItemSearch = styled.div`
   height: 2rem;
   &:hover {
     background: #d6d6d6;
+  }
+  @media screen and (max-width: 768px) {
+    margin-left: 6px;
+    width: 50rem;
+    height: 1.75rem;
+    
   }
 `;
 export const ItemShortcutKeyIcon = styled.div`
@@ -140,6 +160,10 @@ export const SidebarConatainer = styled.div`
   height: auto;
  background-color: #f9f9f9;
  border-right: 1px solid #e5e5e5;
+ @media screen and (max-width: 768px) {
+  display:  ${({ isSidebarVisible }) => (isSidebarVisible ? "block" : "none")};
+  
+ }
 `;
 export const Section = styled.div`
 display: grid;
@@ -151,6 +175,10 @@ display: grid;
 
   &:hover {
     background-color: #f0f0f0; 
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 2fr auto;
+    
   }
 `;
 
@@ -350,5 +378,39 @@ export const CheckboxDetail = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 3rem;
 `
+export const DropDownItemMenu = styled.div`
+display: flex;
+  position: absolute;
+  width: 250px; 
+  height: auto;
+  max-height: 50rem; 
+  overflow-y: auto; 
+  top: 100%; 
+  right: 30; 
+  background: #fff;
+  color: #141414;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  white-space: nowrap; 
+`;
+
+export const DropDownItemContainer = styled.div`
+ display: flex;
+ flex-direction: column;
+  padding: 10px;
+`;
+
+// export const DropDownItem = styled.div`
+//  display: grid;
+//   padding: 8px;
+//   font-family: sans-serif;
+//   color: #141414;
+//   cursor: pointer;
+
+//   &:hover {
+//     background: lightblue;
+//   }
+// `;

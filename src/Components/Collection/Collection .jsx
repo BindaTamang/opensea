@@ -32,7 +32,7 @@ const Collection = () => {
     Polaris, the North Star, functions as a metaphor for the presence I feel emanating from these places, 
     the only constant in environments that are otherwise in constant flux.`;
 
-    const truncatedText = text.slice(0, 100);
+    const truncatedText = text.slice(0, 80);
   return (
     <>
       <ImageSection>  
