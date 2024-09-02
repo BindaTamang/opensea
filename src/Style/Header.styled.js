@@ -17,6 +17,15 @@ export const HeaderContainer = styled.header`
   width: 100%;
 
   @media (max-width: 768px) {
+    background: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#ffffff" : "#141414") : "transparent"};
+  color: ${({ isScrolled, theme }) =>
+    isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
+    padding: 5px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  @media (max-width: 425px) {
     padding: 5px;
     flex-direction: row;
     align-items: flex-start;
@@ -29,6 +38,10 @@ export const Logo = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 768px) {
+    border-right: none;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 425px) {
     border-right: none;
     margin-bottom: 10px;
   }
@@ -53,6 +66,10 @@ export const LogoText = styled.h1`
     font-size: 15px;
     padding-right: 0;
   }
+  @media (max-width: 425px) {
+    font-size: 15px;
+    padding-right: 0;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -60,6 +77,9 @@ export const Nav = styled.nav`
   gap: 1rem;
 
   @media (max-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 425px) {
     display: none;
   }
 `;
@@ -81,6 +101,9 @@ export const NavLink = styled.a`
   @media (max-width: 768px) {
     display: none;
   }
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -98,6 +121,10 @@ export const SearchContainer = styled.div`
     display: ${({ isIconVisible }) => (isIconVisible ? "flex" : "none")};
     background: none;
   }
+  @media (max-width: 425px) {
+    display: ${({ isIconVisible }) => (isIconVisible ? "flex" : "none")};
+    background: none;
+  }
 `;
 
 export const ShortcutKeyIcon = styled.div`
@@ -111,6 +138,9 @@ export const ShortcutKeyIcon = styled.div`
   font-size: 0.8rem;
 
   @media (max-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 425px) {
     display: none;
   }
 `;
@@ -134,6 +164,9 @@ export const SearchInput = styled.input`
    display: none;
 
   }
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 export const ActionIcons = styled.div`
@@ -143,6 +176,9 @@ export const ActionIcons = styled.div`
     isScrolled ? (theme === "light" ? "#000000" : "#ffffff") : "#ffffff"};
 
   @media (max-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 425px) {
     display: none;
   }
 `;
@@ -158,7 +194,19 @@ export const IconContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     > * {
-      display: none; //hide defaul 
+      display: none; 
+    }
+
+    // Only specific classes
+    .login-container,
+    .menu-container {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  @media (max-width: 425px) {
+    > * {
+      display: none; 
     }
 
     // Only specific classes
@@ -270,6 +318,9 @@ export const MenuDropdown = styled(DropdownMenu)`
   display: none;
 
   @media (max-width: 768px) {
+    display: flex;
+  }
+  @media (max-width: 425px) {
     display: flex;
   }
 `;

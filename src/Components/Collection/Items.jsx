@@ -10,6 +10,7 @@ import {
   ItemBody,
   DropDownItemContainer,
   DropDownItemMenu,
+  IconBar,
 } from "../../Style/Items.styled";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -111,12 +112,12 @@ const Items = () => {
             className={isdropDownOpen ? "visible" : null}
           />
         </Div>
-        <Div style={{ width: "180px" }}>
+        <IconBar>
           <TfiMenuAlt style={{ paddingLeft: "5px", marginRight: "10px" }} />
           <MdGridOn style={{ marginRight: "10px" }} />
           <RiLayoutGridLine style={{ marginRight: "10px" }} />
           <BsGrid1X2 />
-        </Div>
+        </IconBar>
       </SearchbarContainer>
       <ItemBody>
         {isSidebarVisible && <ItemSidebar />}

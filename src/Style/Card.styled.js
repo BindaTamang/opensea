@@ -6,8 +6,6 @@ background: ${({ bgColor }) => bgColor || 'transparent'};
   display: flex;
   flex-direction: column;
   padding: 20px;
-  
-  
   h1 {
     font-family: sans-serif;
     text-align: left;

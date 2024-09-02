@@ -23,6 +23,11 @@ export const ImageSection = styled.div`
     padding-bottom: 10px;
     height: 350px;
   }
+  @media screen and (max-width: 425px) {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    height: 300px;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -42,7 +47,14 @@ export const ImageContainer = styled.div`
     border-radius: 20px;
   }
   @media screen and (max-width: 768px) {
-    top: 40%;
+    top: 40%;    
+  }
+  @media screen and (max-width: 425px) {
+    @media screen and (max-width: 425px) {
+    top: 30%;
+    width: 70px;
+    height: 70px;
+  }
     
   }
  
@@ -95,7 +107,25 @@ export const Details = styled.div`
     }
     
   }
-
+  @media screen and (max-width: 425px){
+    margin-top: 150px;
+    h2{
+      font-size: 0.8rem;
+      //margin-bottom:10px;
+    }
+    p{
+      font-size: 0.8rem;
+      //margin-top: 5px;
+      
+    }
+    img{
+      width: 18px;
+      height: 18px;
+      padding-left:5px;
+      padding-top: 10px;
+    }
+    
+  }
   
 `;
 
@@ -136,6 +166,25 @@ export const Stats = styled.div`
     }
     }
   }
+
+  @media screen and (max-width: 425px) {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 0;
+    padding-bottom: 5px;
+    div {
+      text-align: start;
+      margin: 5px 0;
+      h3 {
+      font-size: 0.9rem;
+      //margin-bottom: 0.25em;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+    }
+  }
 `;
 
 export const ParagraphContainer = styled.div`
@@ -145,6 +194,10 @@ export const ParagraphContainer = styled.div`
   width: 100%;
   @media screen and (max-width: 768px) {
     width: 100%;
+    
+  } 
+  @media screen and (max-width: 425px) {
+    width: 90%;
     
   } 
 `;
@@ -170,6 +223,12 @@ export const Paragraph = styled.div`
     font-family: sans-serif;
     width: 100%;
   }
+  @media screen and (max-width: 425px) {
+    padding-left: 10px;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    width: 100%;
+  }
 `;
 
 export const Iconpg = styled.div`
@@ -181,6 +240,9 @@ export const Iconpg = styled.div`
   font-size: 25px;
 
   @media screen and (max-width: 768px) {
+   display: none;
+  }
+  @media screen and (max-width: 425px) {
    display: none;
   }
 `;
@@ -201,6 +263,10 @@ export const HideOrShowButton = styled.button`
   @media screen and (max-width: 768px) {
     padding: 4px 8px;
     font-size: 0.9rem;
+  }
+  @media screen and (max-width: 425px) {
+    padding: 3px 6px;
+    font-size: 0.8rem;
   }
 `;
 
@@ -230,4 +296,21 @@ export const PgDetails = styled.div`
     padding-left: 20px;
     gap: 0.5rem;
   }
+  @media screen and (max-width: 425px) {
+    flex-direction: row;
+    padding-left: 10px;
+    gap: 0.5rem;
+    div {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+  }
+}
 `;

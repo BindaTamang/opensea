@@ -72,8 +72,22 @@ align-items: center; */
         display: none;
       }
     }
+
+    @media screen and (max-width: 425px) {
+    div{
+      img{
+        width: 40px;
+        height: 40px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+      span, p{
+        display: none;
+      }
+    }
     
   }
+}
 `;
 export const ItemSearch = styled.div`
   display: flex;
@@ -90,6 +104,12 @@ export const ItemSearch = styled.div`
     background: #d6d6d6;
   }
   @media screen and (max-width: 768px) {
+    margin-left: 6px;
+    width: 50rem;
+    height: 1.75rem;
+    
+  }
+  @media screen and (max-width: 425px) {
     margin-left: 6px;
     width: 50rem;
     height: 1.75rem;
@@ -135,6 +155,29 @@ export const Div = styled.div`
   &:hover {
     border: #141414;
   }
+
+`;
+export const IconBar = styled.div`
+  width: 180px;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f0f0f0;
+  color: #141414;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: sans-serif;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  
+  &:hover {
+    border: #141414;
+  }
+
+  @media screen and (max-width: 425px) {
+    display: none;
+  }
 `;
 
 export const Body = styled.div`
@@ -161,6 +204,10 @@ export const SidebarConatainer = styled.div`
  background-color: #f9f9f9;
  border-right: 1px solid #e5e5e5;
  @media screen and (max-width: 768px) {
+  display:  ${({ isSidebarVisible }) => (isSidebarVisible ? "block" : "none")};
+  
+ }
+ @media screen and (max-width: 425px) {
   display:  ${({ isSidebarVisible }) => (isSidebarVisible ? "block" : "none")};
   
  }

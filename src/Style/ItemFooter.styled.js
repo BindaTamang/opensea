@@ -11,10 +11,18 @@ height: 60px;
 border-top: 1px solid #f1f1f1;
 box-sizing: border-box;
 z-index: 10;
+@media (max-width: 425px) {
+    flex-direction: row;
+    height: auto;
+    padding: 10px 0;
+  }
 `
 export const FooterToggleSwitch = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 425px) {
+    display: none; 
+  }
 `;
 
 export const FooterSwitchLabel = styled.label`
@@ -26,6 +34,9 @@ export const FooterSwitchLabel = styled.label`
   @media (max-width: 768px) {
     padding-left: 20px;
     padding-right: 5px;
+  }
+  @media (max-width: 425px) {
+    display: none; 
   }
 `;
 
@@ -65,6 +76,19 @@ export const FooterSwitchInput = styled.input.attrs({ type: 'checkbox' })`
       height: 12px;
     }
   }
+
+  @media (max-width: 425px) {
+    display: none; 
+  }
+`;
+export const FooterIcon = styled.div`
+  display: none;
+
+  @media (max-width: 425px) {
+    display: block; 
+    font-size: 1.5rem;
+    color: #4caf50;
+  }
 `;
 export const FooterButton = styled.button`
 border-radius: 20px;
@@ -82,4 +106,8 @@ span{
   margin-left: 30em;
   
 }
+
+@media screen and (max-width: 425px) {
+   margin-left: 30px;
+  }
 `

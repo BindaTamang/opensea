@@ -10,6 +10,10 @@ export const CardGrid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     padding: 10px;
   }
+  @media (max-width: 425px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    padding: 10px;
+  }
 `;
 
 export const SalesWrapper = styled.div`
@@ -30,6 +34,10 @@ export const SalesWrapper = styled.div`
     font-size: 0.9rem;
     padding: 3px;
   }
+  @media (max-width: 425px) {
+    font-size: 0.9rem;
+    padding: 3px;
+  }
 `;
 
 export const CardLastSale = styled.p`
@@ -38,6 +46,9 @@ export const CardLastSale = styled.p`
   padding-left: 10px;
 
   @media (max-width: 768px) {
+    font-size: 12px;
+  }
+  @media (max-width: 425px) {
     font-size: 12px;
   }
 `;
@@ -53,6 +64,9 @@ export const CardImage = styled.img`
     transform: scale(1.05);
   } */
     @media (max-width: 768px) {
+    height: 150px;
+  }
+  @media (max-width: 425px) {
     height: 150px;
   }
 `;
@@ -92,6 +106,9 @@ export const CardContent = styled.div`
   @media (max-width: 768px) {
     padding: 8px;
   }
+  @media (max-width: 425px) {
+    padding: 8px;
+  }
 `;
 
 export const CardTitle = styled.h3`
@@ -99,6 +116,9 @@ export const CardTitle = styled.h3`
   font-weight: 600;
   padding-left: 5px;
   @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media (max-width: 425px) {
     font-size: 14px;
   }
 `;
@@ -110,11 +130,16 @@ export const CardPrice = styled.p`
   @media (max-width: 768px) {
     font-size: 14px;
   }
+  @media (max-width: 425px) {
+    font-size: 14px;
+  }
 `;
 
 export const SalesText = styled.div`
   font-size: 16px;
   @media (max-width: 768px) {
+    font-size: 14px;
+  }@media (max-width: 425px) {
     font-size: 14px;
   }
 `;
@@ -122,6 +147,9 @@ export const SalesText = styled.div`
 export const IconWrapper = styled.div`
   font-size: 24px;
   @media (max-width: 768px) {
+    font-size: 20px;
+  }
+  @media (max-width: 425px) {
     font-size: 20px;
   }
 `;
